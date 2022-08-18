@@ -7,21 +7,24 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static io.restassured.RestAssured.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 public class HrGetRequest {
 
-    //BeforeAll is a annotation equals to @BeforeClass int testNG, we use it with static method name
+    //BeforeAll is an annotation equals to @BeforeClass int testNG, we use it with static method name
 
     @BeforeAll
     public static void init(){
        //save baseurl inside this variable so that we dont need to type each http method.
-        RestAssured.baseURI="http://54.226.176.142:1000/ords/hr";
+        baseURI="http://54.226.176.142:1000/ords/hr";
 
     }
 
     @Test
     public void test1(){
 
-        Response response = RestAssured.get("/regions");
+        Response response = get("/regions");
 
         //print the status code
         System.out.println(response.statusCode());
@@ -41,16 +44,16 @@ public class HrGetRequest {
     public void test2(){
 
 
-    Response response = RestAssured.get("/regions/2");
+    Response response = get("/regions/2");
 
     //print the status code
-    System.out.println(response.statusCode());
+    assertEquals(200,response.statusCode());
 
-    Assertions.assertEquals("application/json",response.contentType());
+    assertEquals("application/json",response.contentType());
 
     response.prettyPrint();
 
-    Assertions.assertEquals(response.body().asString().contains("Americas"),true);
+    assertEquals(response.body().asString().contains("Americas"),true);
 
 
 }
