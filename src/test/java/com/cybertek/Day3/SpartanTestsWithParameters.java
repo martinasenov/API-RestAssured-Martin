@@ -7,9 +7,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.baseURI;
-
-import static io.restassured.RestAssured .*;
-import static org.junit.jupiter.api.Assertions .*;
+import static io.restassured.RestAssured.given;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SpartanTestsWithParameters {
 
@@ -82,6 +82,40 @@ public class SpartanTestsWithParameters {
     }
 
 
+    /*
+     Given accept type is json
+     And query parameter values are:
+     gender|Female
+     NameContains|e
+     When user sends GET request to /api/spartans/search
+     Then response status code should be 200
+     And response content-type:application/json
+     And "Female" should be in response payload
+     And "Janette" should be in response payload
+     */
+@DisplayName("GET request to /api/spartans/search with Query Params")
+    @Test
+    public void test3(){
+    Response response = given().accept(ContentType.JSON)
+            .and().queryParam("nameContains", "e")
+            .and().queryParam("gender", "Female")
+            .when()
+            .get("/api/spartans/search");
+
+
+
+    //verify status code
+    assertEquals(200,response.statusCode());
+
+    //verify content type
+    assertEquals("application/json", response.contentType());
+
+    //"Female" should be in response payload
+    assertTrue(response.body().asString().contains("Female"));
+
+    //"Janette" should be in response payload
+    assertTrue(response.body().asString().contains("Janette"));
+}
 
 
 
