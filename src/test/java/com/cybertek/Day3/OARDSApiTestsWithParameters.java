@@ -44,4 +44,36 @@ public class OARDSApiTestsWithParameters {
     }
 
 
+    @DisplayName("Send a GET request to /employees and get only IT_PROG ")
+    @Test
+    public void test2(){
+
+        Response response = given().accept(ContentType.JSON)
+                .and().queryParam("q", "{\"job_id\":\"IT_PROG\"}")
+                .log().all()
+                .when()
+                .get("/employees");
+
+        //verify status code
+        assertEquals(200,response.statusCode());
+
+        //verify content type
+        assertEquals("application/json", response.header("Content-Type"));
+
+        assertTrue(response.body().asString().contains("IT_PROG"));
+
+        response.prettyPrint();
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 }
