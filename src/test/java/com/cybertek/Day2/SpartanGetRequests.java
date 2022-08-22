@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 public class SpartanGetRequests {
 
-  String baseUrl="http://54.226.176.142:8000";
+  String baseUrl="http://54.160.162.92:8000";
 
 
   /*

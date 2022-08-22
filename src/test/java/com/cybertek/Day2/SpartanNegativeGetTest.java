@@ -16,7 +16,7 @@ public class SpartanNegativeGetTest {
     @BeforeAll
     public static void init(){
         //save baseurl inside this variable so that we dont need to type each http method.
-        baseURI="http://54.226.176.142:8000";
+        baseURI="http://54.160.162.92:8000";
     }
 
 
