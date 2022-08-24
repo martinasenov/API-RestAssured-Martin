@@ -36,4 +36,24 @@ public class CBTrainingWithHamcrestMatchers extends CyberTekTestBase {
 
     }
 
+
+
+    @DisplayName("GET request to teacher/all anc chaining")
+    @Test
+    public void teachersTest(){
+
+
+        given()
+                .accept(ContentType.JSON)
+
+        .when()
+                .get("/teacher/all")
+        .then()
+                .statusCode(200)
+                .and()
+                .body("teachers.firstName",hasItems("Adrian","Russell","Sharan","Steve"));
+
+    }
+
+
 }
