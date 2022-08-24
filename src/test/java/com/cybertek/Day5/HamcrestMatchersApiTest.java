@@ -10,7 +10,7 @@ import static io.restassured.RestAssured.*;
 
 
 
-public class HamcrestMatchersApiTest extends SpartanTestBase {
+public class HamcrestMatchersApiTest extends SpartanTestBase  {
     /*
            given accept type is json
            And path param id is 15
@@ -44,14 +44,6 @@ public class HamcrestMatchersApiTest extends SpartanTestBase {
                     "name", is("Meta"),
                                          "gender", is("Female"),
                                          "phone", is(1938695106));
-
-
-
-
-
-
-
-
 
 
     }
