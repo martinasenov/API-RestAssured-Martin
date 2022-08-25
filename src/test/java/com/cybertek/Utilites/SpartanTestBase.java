@@ -10,5 +10,9 @@ public abstract class SpartanTestBase{
     public static void init() {
         //save baseurl inside this variable so that we don't need to type each http method.
         baseURI = ConfigurationReader.getProperty("SpartanTestBase");
+
+        DBUtils.createConnection(ConfigurationReader.getProperty("SpartanDataBase"),
+                ConfigurationReader.getProperty("SpartanDataBaseUsername"),
+                ConfigurationReader.getProperty("SpartanDataBasePassword"));
     }
 }

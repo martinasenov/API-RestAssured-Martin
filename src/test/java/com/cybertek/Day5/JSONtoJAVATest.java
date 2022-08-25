@@ -1,5 +1,7 @@
 package com.cybertek.Day5;
 
+import com.cybertek.Utilites.ConfigurationReader;
+import com.cybertek.Utilites.DBUtils;
 import com.cybertek.Utilites.SpartanTestBase;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
@@ -7,15 +9,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-import static io.restassured.RestAssured.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
-import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.is;
 
-
-public class JSONtoJAVATest extends SpartanTestBase {
+public class JSONtoJAVATest extends SpartanTestBase{
 
 
     @DisplayName("GET one Spartan and deserialize to Map")
@@ -37,5 +35,11 @@ public class JSONtoJAVATest extends SpartanTestBase {
         assertThat(actualName,is("Meta"));
 
 
+
     }
+
+
+
+
+
 }
