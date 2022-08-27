@@ -3,6 +3,7 @@ package com.cybertek.Day6;
 import com.cybertek.Utilites.SpartanTestBase;
 import com.cybertek.pojo.Spartan;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -38,6 +39,17 @@ public class SpartanPojoGetRequestTest extends SpartanTestBase {
         System.out.println("spartan15.getGender() = " + spartan15.getGender());
         System.out.println("spartan15.getName() = " + spartan15.getName());
         System.out.println("spartan15.getPhone() = " + spartan15.getPhone());
+
+
+        //second way of deserialize json to java
+        //2. using JasonPath to deserialize to custom class
+
+        JsonPath jsonPath=response.jsonPath();
+
+       Spartan s15 = jsonPath.getObject("",Spartan.class);
+
+        System.out.println("s15.getName() = " + s15.getName());
+        System.out.println("s15.getPhone() = " + s15.getPhone());
 
 
     }
