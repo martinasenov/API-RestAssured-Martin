@@ -15,7 +15,8 @@ public class Spartan {
     private String gender;
     private long phone;
 
-
+    //getter and setter
+    //to String
     public int getId() {
         return id;
     }
@@ -48,8 +49,13 @@ public class Spartan {
         this.phone = phone;
     }
 
-
-
-
-
+    @Override
+    public String toString() {
+        return "Spartan{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", phone=" + phone +
+                '}';
+    }
 }
