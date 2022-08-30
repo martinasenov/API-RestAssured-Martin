@@ -54,5 +54,27 @@ public class SpartanPojoGetRequestTest extends SpartanTestBase {
 
     }
 
+    @Test
+    public void spartanSearchWithPojo(){
+
+        //spartans/search?nameContains=a&gender=Male
+        //send GET request to above endpoint and save first object with type Spartan POJO
+
+        JsonPath jsonPath = given().accept(ContentType.JSON)
+                .and().queryParams("nameContains", "a", "gender", "Male")
+                .when().get("/api/spartans/search")
+                .then().statusCode(200)
+                .extract().jsonPath();
+
+        //get the first spartan from content list and put inside spartan object
+        Spartan s1=jsonPath.getObject("content[0]",Spartan.class);
+
+        System.out.println("s1 = " + s1);
+        System.out.println("s1.getName() = " + s1.getName());
+        System.out.println("s1.getGender() = " + s1.getGender());
+        System.out.println("s1.getPhone() = " + s1.getPhone());
+
+
+    }
 
 }
