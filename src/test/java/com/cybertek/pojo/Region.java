@@ -14,7 +14,7 @@ import java.util.List;
 public class Region {
 
     @JsonProperty("region_id") // even if we use different variable this annotation is used to match the key values in json
-    private int region_id;
+    private int RId;
 
     @JsonProperty("region_name")
     private String region_name;
